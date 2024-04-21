@@ -9,4 +9,4 @@ __pycache__/
 *.so
 *~
 .cache
-
+.DS_Store
