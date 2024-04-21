@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+from target_method_analysis import TargetMethodAnalysis
+from entry_function import *
+from target_function import *
+
+from angr.sim_type import *
+from angr.calling_conventions import SimFunctionArgument
+
 import angr
 import claripy
 
@@ -10,54 +17,72 @@ def symbolic_filename():
         for addr in addrs:
             return addr.rebased_addr
 
-    project = angr.Project("/Users/william.hafner/dev/hello-rust/target/debug/hello-rust", load_options={'auto_load_libs':False})
+    path = "/Users/william.hafner/dev/hello-rust/target/debug/hello-rust"
 
     # objdump --syms /Users/william.hafner/dev/hello-rust/target/debug/hello-rust | grep "file"
     entry_func_addr = get_address_from_symbol('__ZN10hello_rust23rpc_create_file_if_no_q17h35276a1d9d36e04eE')
     target_func_addr = get_address_from_symbol('__ZN10hello_rust11create_file17h57d00ed4135b8bafE')
 
-    charstar = angr.sim_type.SimTypePointer(angr.sim_type.SimTypeChar())
-    longlong = angr.sim_type.SimTypeLongLong()
-    entry_func_prototype = angr.sim_type.SimTypeFunction((charstar, longlong), longlong)
-    target_func_prototype = angr.sim_type.SimTypeFunction((charstar, longlong), longlong)
-
-    symbolic_input_generator = SymbolicInputGenerator(entry_calling_convention)
-    symbolic_arguments = symbolic_input_generator.create_symbolic_input()
-
-    cfg = project.analyses.CFG(fail_fast=True)
-    entry_variable_recovery = project.analyses.VariableRecoveryFast(entry_func_addr) # Variable analysis required for calling convention analysis (?)
-    entry_calling_convention = project.analyses.CallingConvention(entry_func_addr)
-
-    state = project.factory.call_state(entry_func_addr, *symbolic_arguments, cc=entry_calling_convention.cc, prototype=entry_func_prototype) # provide prototype kwarg
-
-    symbolic_input_generator.constrain_symbolic_input(symbolic_arguments)
+    charstar = SimTypePointer(SimTypeChar())
+    longlong = SimTypeLongLong()
     
-    simulation_manager = project.factory.simulation_manager(state)
+    # Setup of entry method data
+    max_filename_size = 40 # max number of bytes we'll try to solve for
+    symbolic_filename = claripy.BVS('symbolic_filename', 8 * max_filename_size)
+    symbolic_filename_size = claripy.BVS("symbolic_filename_size", 64)
+    
+    filename_pointer = EntryFunctionArgument(
+        type = charstar,
+        value = angr.PointerWrapper(symbolic_filename, buffer=True),
+        name="filename_pointer"
+    )
+    filename_length = EntryFunctionArgument(
+        type = longlong,
+        value = symbolic_filename_size,
+        constraints = (
+            symbolic_filename_size >= 0,
+            symbolic_filename_size <= max_filename_size
+        ),
+        name="filename_length",
+    )
+    return_type = longlong
 
-    payload = rb'_hello_world_with.txq'
-    def target_satisfiability_check(symbolic_arguments, payload): # TODO: Make symbolic_arguments a List[ValueWithSymType] to avoid having to `.with_type`. Give this class some abstractions where you can pass in a state and get values
-        arg0 = symbolic_arguments[0].get_value(state).concrete_value
-        arg1 = symbolic_arguments[1].get_value(state)
-
-        symbolic_payload = state.mem[arg0].with_type(angr.sim_type.SimTypeChar()).array(arg1)
-        return state.satisfiable(extra_constraints=(
-            arg1 == len(payload), 
-            *[symbolic_payload[offset].resolved == byte for offset, byte in enumerate(payload)]))
-
-    # Calling convention, variables, and variable types of target function
-    # https://github.com/angr/angr/issues/3125
-    target_variable_recovery = project.analyses.VariableRecoveryFast(target_func_addr) # Variable analysis required for calling convention analysis (?)
-    target_calling_convention = project.analyses.CallingConvention(target_func_addr) # Discover registers used to store function arguments
-
-    explorer = TargetMethodPayloadExecution.get_explorer(
-        target_func_addr,
-        target_method_model,
-        cfg
+    entry_function = EntryFunction(
+        address = entry_func_addr,
+        constrainted_argument_types = (filename_pointer, filename_length),
+        return_type = return_type
     )
 
-    simulation_manager.use_technique(explorer)
+    # Setup of target method data
+    target_func_prototype = SimTypeFunction((charstar, longlong), longlong)
 
-    found = simulation_manager.found
+    payload = rb'_hello_world_with.txq'
+    def target_payload_satisfiability_check(state: SimState, target_arguments: List[Any]): 
+        pointer = target_arguments[0]
+        length = target_arguments[1]
+
+        # If our string length can't be the desired length, we're unsat
+        if not state.satisfiable(extra_constraints = (length == len(payload))):
+            return False
+
+        symbolic_payload = state.mem[pointer].with_type(SimTypeChar()).array(len(payload))
+        return state.satisfiable(extra_constraints=(
+            length == len(payload), 
+            *[symbolic_payload[offset].resolved == byte for offset, byte in enumerate(payload)]))
+    
+    target_function = TargetFunction(
+        address = target_func_addr,
+        prototype = target_func_prototype,
+        satisfiability_check = target_payload_satisfiability_check
+    )
+    
+    target_method_analysis = TargetMethodAnalysis(
+        path,
+        entry_function,
+        target_function
+    )
+
+    found = target_method_analysis.run()
     if len(found) > 0:
         print("Found path to target func!")
     else:

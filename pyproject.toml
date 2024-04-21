@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "angr-project"
+version = "0.1.0"
+description = "angr-project"
+authors = ["william.hafner"]
+readme = "README.md"
+packages = [
+    {include = "angr-project", from = "src"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+angr = "^9.2.92"
+claripy = "^9.2.92"
+typing = "^3.7.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
