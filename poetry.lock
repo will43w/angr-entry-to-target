@@ -82,6 +82,17 @@ pcode = ["pypcode (>=1.1)"]
 testing = ["pytest", "pytest-xdist"]
 
 [[package]]
+name = "argparse"
+version = "1.4.0"
+description = "Python command-line parsing library"
+optional = false
+python-versions = "*"
+files = [
+    {file = "argparse-1.4.0-py2.py3-none-any.whl", hash = "sha256:c31647edb69fd3d465a847ea3157d37bed1f95f19760b11a47aa91c04b666314"},
+    {file = "argparse-1.4.0.tar.gz", hash = "sha256:62b089a55be1d8949cd2bc7e0df0bddb9e028faefc8c32038cc84862aefdd6e4"},
+]
+
+[[package]]
 name = "backports-strenum"
 version = "1.3.1"
 description = "Base class for creating enumerated constants that are also subclasses of str"
@@ -974,4 +985,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "e8c5976fa1fb3e770e401a28dec0010eb30a721a15047a21aeefbdc2d31acdca"
+content-hash = "c9067f23ddeb0d160a2507a3e66cca82ea094f4f709122f97d0352e79a6c2d0a"

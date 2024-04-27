@@ -1,4 +1,5 @@
-from typing import List, Tuple, Optional, Generator, Union
+from typing import List, Tuple, Optional, Union
+from collections.abc import Iterator
 
 from angr.sim_type import SimType, SimTypeFunction
 
@@ -20,11 +21,11 @@ class EntryFunctionArgument:
     @property
     def constraints(
         self,
-    ) -> Generator[Constraint]:
-        if self.constraints is None:
+    ) -> Iterator[Constraint]:
+        if self._constraints is None:
             return iter(())
         
-        return self.constraints
+        return self._constraints
 
 
 class EntryFunction:
@@ -37,16 +38,16 @@ class EntryFunction:
         self.address = address
         self._arguments = arguments
         self.prototype = SimTypeFunction(
-            (arg.type for arg in arguments),
+            [arg.type for arg in arguments],
             return_type,
-            arg_names=(arg.name for arg in arguments))
+            arg_names=[arg.name for arg in arguments])
         
     @property
-    def arguments(self) -> Generator[Union[SymbolicValue, ConcreteValue]]:        
-        return (argument.value for argument in self._arguments)
+    def arguments(self) -> Tuple[Union[SymbolicValue, ConcreteValue], ...]:
+        return [argument.value for argument in self._arguments]
     
     @property
-    def constraints(self) -> Generator[Constraint]:
+    def constraints(self) -> Iterator[Constraint]:
         for argument in self._arguments:
             for constraint in argument.constraints:
                 yield constraint

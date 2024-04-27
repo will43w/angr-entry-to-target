@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "angr-project"
+name = "angrparc"
 version = "0.1.0"
-description = "angr-project"
+description = "angrparc"
 authors = ["william.hafner"]
 readme = "README.md"
 packages = [
-    {include = "angr-project", from = "src"}
+    {include = "angrparc", from = "src"}
 ]
 
 [tool.poetry.dependencies]
@@ -13,7 +13,10 @@ python = "^3.9"
 angr = "^9.2.92"
 claripy = "^9.2.92"
 typing = "^3.7.0.0"
+argparse = "^1.4.0"
 
+[tool.poetry.scripts]
+calling-convention-helper = "angrparc.scripts.calling_convention_helper:main"
 
 [build-system]
 requires = ["poetry-core"]
