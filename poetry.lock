@@ -2,13 +2,13 @@
 
 [[package]]
 name = "ailment"
-version = "9.2.99"
+version = "9.2.101"
 description = "The angr intermediate language."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "ailment-9.2.99-py3-none-any.whl", hash = "sha256:d256617c266363a966afdd6cc92e392c8a1f334266c68f7986ec3883abb690f3"},
-    {file = "ailment-9.2.99.tar.gz", hash = "sha256:4b57fb84bb902751612dd4069f3087f186f220e7fb76755f6674c0e9478c75e5"},
+    {file = "ailment-9.2.101-py3-none-any.whl", hash = "sha256:d2146ad7bbb7f45a9203174aa26dfa7679ace8b1c6aff263b78b7297e37efc8e"},
+    {file = "ailment-9.2.101.tar.gz", hash = "sha256:7516e4e18e39777d20c8a02ee72beb0eb7bd4d69524490acaa9af2fcd770d026"},
 ]
 
 [package.extras]
@@ -17,25 +17,25 @@ testing = ["pytest", "pytest-xdist"]
 
 [[package]]
 name = "angr"
-version = "9.2.99"
+version = "9.2.101"
 description = "A multi-architecture binary analysis toolkit, with the ability to perform dynamic symbolic execution and various static analyses on binaries"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "angr-9.2.99-py3-none-macosx_10_9_x86_64.whl", hash = "sha256:72d07e6753dd09ffc80f2d24bc73bbb179591bdc45a00c78543cea5a7af6a179"},
-    {file = "angr-9.2.99-py3-none-manylinux2014_x86_64.whl", hash = "sha256:f18f17ad73f04a71b9c45969228c357c8a546531159aa9fd6aa74f8166a944d3"},
-    {file = "angr-9.2.99-py3-none-win_amd64.whl", hash = "sha256:77f116adf33a89f6b638d45a7d805bb030a4f014c0f83e8c5459551c3799824b"},
-    {file = "angr-9.2.99.tar.gz", hash = "sha256:85343ede6867749b9c6c2673a1beddf822b8c7fae28a8d7ba2a9303dd79acac8"},
+    {file = "angr-9.2.101-py3-none-macosx_10_9_x86_64.whl", hash = "sha256:31177af57d01b2b3e5e7689a3eabe1c69218fbffd827a3c63b0c88e2002a3d28"},
+    {file = "angr-9.2.101-py3-none-manylinux2014_x86_64.whl", hash = "sha256:4d548c7fa0957de443d602f2b225efd8895c931e2b5b9b2e13660485cd81eb60"},
+    {file = "angr-9.2.101-py3-none-win_amd64.whl", hash = "sha256:b1431346250997ade83faa0673f01bc27287488c9cb62325eb31cc525893ab17"},
+    {file = "angr-9.2.101.tar.gz", hash = "sha256:7046ac350ee6bd6f7ee382a9217613501e5f8912103a61c486493ac91c7edcf7"},
 ]
 
 [package.dependencies]
-ailment = "9.2.99"
-archinfo = "9.2.99"
+ailment = "9.2.101"
+archinfo = "9.2.101"
 cachetools = "*"
 capstone = "5.0.0.post1"
 cffi = ">=1.14.0"
-claripy = "9.2.99"
-cle = "9.2.99"
+claripy = "9.2.101"
+cle = "9.2.101"
 colorama = {version = "*", markers = "platform_system == \"Windows\""}
 CppHeaderParser = "*"
 dpkt = "*"
@@ -48,7 +48,7 @@ protobuf = ">=3.19.0"
 psutil = "*"
 pycparser = ">=2.18"
 pyformlang = "*"
-pyvex = "9.2.99"
+pyvex = "9.2.101"
 rich = ">=13.1.0"
 rpyc = "*"
 sortedcontainers = "*"
@@ -64,13 +64,13 @@ testing = ["keystone-engine", "pypcode (>=2.0,<3.0)", "pytest", "pytest-split", 
 
 [[package]]
 name = "archinfo"
-version = "9.2.99"
+version = "9.2.101"
 description = "Classes with architecture-specific information useful to other projects."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "archinfo-9.2.99-py3-none-any.whl", hash = "sha256:2caa1da7389bd0176614fd74dd780935dbcc3ef611b6297d85a483e04e0e8640"},
-    {file = "archinfo-9.2.99.tar.gz", hash = "sha256:5d68a5bf86325e71dd99ea934655081cec43ba075c5ef6f646c5ed27f0e78135"},
+    {file = "archinfo-9.2.101-py3-none-any.whl", hash = "sha256:9088fbd5dc9dec739d798a63c114d4a32f31194e844800107aeb7ca7f50adbb5"},
+    {file = "archinfo-9.2.101.tar.gz", hash = "sha256:49f10a0592551e001aa4bf21e925e5ee4a6b8a9ca30aa0137848ef3ccaf0f9b7"},
 ]
 
 [package.dependencies]
@@ -236,17 +236,17 @@ files = [
 
 [[package]]
 name = "bitstring"
-version = "4.1.4"
+version = "4.2.1"
 description = "Simple construction, analysis and modification of binary data."
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "bitstring-4.1.4-py3-none-any.whl", hash = "sha256:da46c4d6f8f3fb75a85566fdd33d5083ba8b8f268ed76f34eefe5a00da426192"},
-    {file = "bitstring-4.1.4.tar.gz", hash = "sha256:94f3f1c45383ebe8fd4a359424ffeb75c2f290760ae8fcac421b44f89ac85213"},
+    {file = "bitstring-4.2.1-py3-none-any.whl", hash = "sha256:9ae5d89072b065d640d645d37c0efcd27284b2f79f1c48cc1cd38b54e1932b4f"},
+    {file = "bitstring-4.2.1.tar.gz", hash = "sha256:8abb5a661588c764bacf1a23d64c7bb57517d2841e3e6f54fb8c057119e0540d"},
 ]
 
 [package.dependencies]
-bitarray = ">=2.8.0,<3.0.0"
+bitarray = ">=2.9.0,<3.0.0"
 
 [[package]]
 name = "cachetools"
@@ -342,13 +342,13 @@ pycparser = "*"
 
 [[package]]
 name = "claripy"
-version = "9.2.99"
+version = "9.2.101"
 description = "An abstraction layer for constraint solvers"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "claripy-9.2.99-py3-none-any.whl", hash = "sha256:2511af85b431ec072226b292e2afd6864b4f486ba043e2b4da0109a9cedf4831"},
-    {file = "claripy-9.2.99.tar.gz", hash = "sha256:e88dbe1b899a19d825a4b3ac73b65e4391f6772973e1e20a1104b3bb24d3c83b"},
+    {file = "claripy-9.2.101-py3-none-any.whl", hash = "sha256:630f4819588e69f4678ff49252437f7f7ed7c48ef16dccead81351a5ac30cb5d"},
+    {file = "claripy-9.2.101.tar.gz", hash = "sha256:03586e5c433e9ab0454d81fc4a0d112145e42d8747f01977099e1bf9511d5595"},
 ]
 
 [package.dependencies]
@@ -364,20 +364,20 @@ testing = ["cvc4-solver", "pytest", "pytest-xdist"]
 
 [[package]]
 name = "cle"
-version = "9.2.99"
+version = "9.2.101"
 description = "CLE Loads Everything (at least, many binary formats!) and provides a pythonic interface to analyze what they are and what they would look like in memory."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "cle-9.2.99-py3-none-any.whl", hash = "sha256:73319ac6f0c2e05fff01f8f9198da8244a08aa568362461054b4375b909cb78d"},
-    {file = "cle-9.2.99.tar.gz", hash = "sha256:e4eaedeb2bb28917781a4bc7b44655335ff640b8dac771c57037bc4fa7494d0f"},
+    {file = "cle-9.2.101-py3-none-any.whl", hash = "sha256:62a41e153d352cd6dbf11d07258d7529b6eec8e4b620841635b04c3394e96e72"},
+    {file = "cle-9.2.101.tar.gz", hash = "sha256:8b2778e4251c4ada36d307723dae0feadedb67657d36e903498cda0a6676967c"},
 ]
 
 [package.dependencies]
-archinfo = "9.2.99"
+archinfo = "9.2.101"
 pefile = "*"
 pyelftools = ">=0.27"
-pyvex = "9.2.99"
+pyvex = "9.2.101"
 sortedcontainers = ">=2.0"
 
 [package.extras]
@@ -628,6 +628,20 @@ files = [
 ]
 
 [[package]]
+name = "parameterized"
+version = "0.9.0"
+description = "Parameterized testing with any Python test framework"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "parameterized-0.9.0-py2.py3-none-any.whl", hash = "sha256:4e0758e3d41bea3bbd05ec14fc2c24736723f243b28d702081aef438c9372b1b"},
+    {file = "parameterized-0.9.0.tar.gz", hash = "sha256:7fc905272cefa4f364c1a3429cbbe9c0f98b793988efb5bf90aac80f08db09b1"},
+]
+
+[package.extras]
+dev = ["jinja2"]
+
+[[package]]
 name = "pefile"
 version = "2023.2.7"
 description = "Python PE parsing module"
@@ -640,13 +654,13 @@ files = [
 
 [[package]]
 name = "plumbum"
-version = "1.8.2"
+version = "1.8.3"
 description = "Plumbum: shell combinators library"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "plumbum-1.8.2-py3-none-any.whl", hash = "sha256:3ad9e5f56c6ec98f6f7988f7ea8b52159662ea9e915868d369dbccbfca0e367e"},
-    {file = "plumbum-1.8.2.tar.gz", hash = "sha256:9e6dc032f4af952665f32f3206567bc23b7858b1413611afe603a3f8ad9bfd75"},
+    {file = "plumbum-1.8.3-py3-none-any.whl", hash = "sha256:8595d36dae2472587d6f59789c8d7b26250f45f6f6ed75ccb378de59ee7b9cf9"},
+    {file = "plumbum-1.8.3.tar.gz", hash = "sha256:6092c85ab970b7a7a9d5d85c75200bc93be82b33c9bdf640ffa87d2d7c8709f0"},
 ]
 
 [package.dependencies]
@@ -775,17 +789,16 @@ pydot = "*"
 
 [[package]]
 name = "pygments"
-version = "2.17.2"
+version = "2.18.0"
 description = "Pygments is a syntax highlighting package written in Python."
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "pygments-2.17.2-py3-none-any.whl", hash = "sha256:b27c2826c47d0f3219f29554824c30c5e8945175d888647acd804ddd04af846c"},
-    {file = "pygments-2.17.2.tar.gz", hash = "sha256:da46cec9fd2de5be3a8a784f434e4c4ab670b4ff54d605c4c2717e9d49c4c367"},
+    {file = "pygments-2.18.0-py3-none-any.whl", hash = "sha256:b8e6aca0523f3ab76fee51799c488e38782ac06eafcf95e7ba832985c8e7b13a"},
+    {file = "pygments-2.18.0.tar.gz", hash = "sha256:786ff802f32e91311bff3889f6e9a86e81505fe99f2735bb6d60ae0c5004f199"},
 ]
 
 [package.extras]
-plugins = ["importlib-metadata"]
 windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
@@ -815,15 +828,15 @@ files = [
 
 [[package]]
 name = "pyvex"
-version = "9.2.99"
+version = "9.2.101"
 description = "A Python interface to libVEX and VEX IR"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pyvex-9.2.99-py3-none-macosx_10_9_x86_64.whl", hash = "sha256:f371fe05d6e01888163b09f480d6761b0b67ba541642e1d00231ae0836f4df43"},
-    {file = "pyvex-9.2.99-py3-none-manylinux2014_x86_64.whl", hash = "sha256:bcd81b0816739ada03dc48ddf0cec155a3bc19c7d30c0000cb7ef15930442310"},
-    {file = "pyvex-9.2.99-py3-none-win_amd64.whl", hash = "sha256:86a16ea2282a65b86f0c231272c7b22f40cd7ad467625a9978d093f2d08cc187"},
-    {file = "pyvex-9.2.99.tar.gz", hash = "sha256:cb7d084772fe6e0400da02649a29e4224cf5fd41f6eedb879f41249349ad8219"},
+    {file = "pyvex-9.2.101-py3-none-macosx_10_9_x86_64.whl", hash = "sha256:ae72863fdccfdb7956d390218c4af43175b70ff674e7f637fcd7ea07b1866d9f"},
+    {file = "pyvex-9.2.101-py3-none-manylinux2014_x86_64.whl", hash = "sha256:71351760d58113956cd5b8ff8c0a8f0f4353f24d89a0a95143d42fd97ef3e5fa"},
+    {file = "pyvex-9.2.101-py3-none-win_amd64.whl", hash = "sha256:45b6e03a22e47725f1535f8dcb2609462031f91d8198d4f205c75fe21ad455ef"},
+    {file = "pyvex-9.2.101.tar.gz", hash = "sha256:cc8f3a3587b46fda699bd66febecdf07751c961226d534ea702f6fac19f7351f"},
 ]
 
 [package.dependencies]
@@ -985,4 +998,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "c9067f23ddeb0d160a2507a3e66cca82ea094f4f709122f97d0352e79a6c2d0a"
+content-hash = "1e3760970a5d5d907642c952f4a1cecc53a017e9d53b71fbec1f2245ea895e09"
