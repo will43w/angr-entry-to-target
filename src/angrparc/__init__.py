@@ -6,4 +6,4 @@ Constraint = Any
 
 from .entry_function import EntryFunction, EntryFunctionArgument
 from .target_function import TargetFunction
-from .target_method_analysis import TargetMethodAnalysis
+from .entry_to_target_analysis import EntryToTargetAnalysis

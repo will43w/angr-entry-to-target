@@ -12,7 +12,7 @@ import angr
 from .entry_function import EntryFunction
 from .target_function import TargetFunction
 
-class TargetMethodAnalysis: # TODO: Don't overload "Analysis" - angr already has a definition
+class EntryToTargetAnalysis: # TODO: Don't overload "Analysis" - angr already has a definition
     def __init__(
         self,
         path: str,
@@ -66,7 +66,7 @@ class TargetMethodAnalysis: # TODO: Don't overload "Analysis" - angr already has
         cfg: CFG,
         target_arguments: List[SimFunctionArgument]
     ) -> ExplorationTechnique:
-        explorer = TargetMethodAnalysis._get_exploration_technique(
+        explorer = EntryToTargetAnalysis._get_exploration_technique(
              find_check=self.target_function.get_find_check(target_arguments),
              avoid_check=self.target_function.get_avoid_check(cfg),
              cfg=cfg)

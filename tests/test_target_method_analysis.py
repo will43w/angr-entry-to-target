@@ -6,7 +6,7 @@ from angr import PointerWrapper
 import unittest
 from parameterized import parameterized
 
-class TestTargetMethodAnalysis(unittest.TestCase):
+class TestEntryToTargetAnalysis(unittest.TestCase):
 
     _filename_with_q = "my_file_with_q.txt"
     _filename_without_q = "my_file.txt"
@@ -15,7 +15,7 @@ class TestTargetMethodAnalysis(unittest.TestCase):
         [True],
         [False],
     ])
-    def test_target_method_analysis_correctness(self, filename_has_q):
+    def test_entry_to_target_analysis_correctness(self, filename_has_q):
         """
         `./binaries/hello-rust` was compiled with the below functions.
 
@@ -43,9 +43,9 @@ class TestTargetMethodAnalysis(unittest.TestCase):
 
         filename = None
         if filename_has_q:
-            filename = TestTargetMethodAnalysis._filename_with_q
+            filename = TestEntryToTargetAnalysis._filename_with_q
         else:
-            filename = TestTargetMethodAnalysis._filename_without_q
+            filename = TestEntryToTargetAnalysis._filename_without_q
 
         path = "./binaries/hello-rust"
 
@@ -74,12 +74,11 @@ class TestTargetMethodAnalysis(unittest.TestCase):
             ),
             name="filename_length",
         )
-        return_type = longlong
 
         entry_function = EntryFunction(
             address = entry_func_addr,
             arguments = (filename_pointer, filename_length),
-            return_type = return_type
+            return_type = longlong
         )
 
         # Setup of target method model
@@ -105,7 +104,7 @@ class TestTargetMethodAnalysis(unittest.TestCase):
             prototype = target_func_prototype,
             satisfiability_check = target_payload_satisfiability_check)
         
-        target_method_analysis = TargetMethodAnalysis(
+        target_method_analysis = EntryToTargetAnalysis(
             path,
             entry_function,
             target_function
