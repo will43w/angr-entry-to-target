@@ -1,6 +1,6 @@
 ## Entry To Target Analysis
 
-This code uses [Angr](https://github.com/angr/angr) to check if some target function call, with some set of argument values is reachable from some entry function call in a binary. 
+This code uses [Angr](https://github.com/angr/angr) to check if some target function is callable, with some set of argument values, from some entry function in a binary. 
 
 ### Example
 
