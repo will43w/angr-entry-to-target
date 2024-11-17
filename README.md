@@ -4,3 +4,4 @@ This code uses [Angr](https://github.com/angr/angr) to check if some target func
 
 ### Example
 
+See tests/test_target_method_analysis.py for example usage. 
